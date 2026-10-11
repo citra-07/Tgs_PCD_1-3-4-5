@@ -1,0 +1,386 @@
+from pathlib import Path
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+
+# ============================================================
+# 1. FOLDER
+# ============================================================
+
+# Folder citra asli
+folder_citra = Path("Foto_Ijazah")
+
+# Folder citra grayscale yang sudah dibuat
+folder_grayscale = Path("Hasil_Grayscale")
+
+# Folder hasil histogram citra asli
+folder_histogram_asli = Path("Hasil_Histogram/Histogram_Asli")
+
+# Folder hasil histogram grayscale
+folder_histogram_grayscale = Path("Hasil_Histogram/Histogram_Grayscale")
+
+
+# Membuat folder jika belum ada
+folder_histogram_asli.mkdir(parents=True, exist_ok=True)
+folder_histogram_grayscale.mkdir(parents=True, exist_ok=True)
+
+
+# ============================================================
+# 2. MENCARI CITRA ASLI
+# ============================================================
+
+daftar_citra = []
+
+for i in range(1, 10):
+
+    nama_file = f"foto{i}.jpg.jpg"
+    file_citra = folder_citra / nama_file
+
+    if file_citra.exists():
+        daftar_citra.append(file_citra)
+
+
+# ============================================================
+# 3. INFORMASI PROGRAM
+# ============================================================
+
+print("=" * 70)
+print("              PROGRAM ANALISIS HISTOGRAM")
+print("=" * 70)
+
+print(f"Jumlah citra ditemukan : {len(daftar_citra)}")
+print(f"Folder citra asli      : {folder_citra}")
+print(f"Folder grayscale       : {folder_grayscale}")
+print(f"Histogram citra asli   : {folder_histogram_asli}")
+print(f"Histogram grayscale    : {folder_histogram_grayscale}")
+
+
+# ============================================================
+# 4. CEK CITRA
+# ============================================================
+
+if len(daftar_citra) == 0:
+
+    print("\nTidak ada citra ditemukan!")
+    print("Pastikan gambar berada di folder 'Foto_Ijazah'.")
+
+    exit()
+
+
+# ============================================================
+# 5. PROSES SEMUA CITRA
+# ============================================================
+
+for nomor, file_citra in enumerate(daftar_citra, start=1):
+
+    print("\n")
+    print("=" * 70)
+    print(f"CITRA {nomor:02d} : {file_citra.name}")
+    print("=" * 70)
+
+    # ========================================================
+    # A. MEMBACA CITRA ASLI
+    # ========================================================
+
+    img = cv2.imread(str(file_citra))
+
+    if img is None:
+
+        print("Citra gagal dibaca!")
+        continue
+
+
+    # ========================================================
+    # B. MENGUBAH BGR KE RGB
+    # ========================================================
+
+    rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+
+    # ========================================================
+    # C. MEMBACA CITRA GRAYSCALE
+    # ========================================================
+
+    nama_grayscale = f"foto{nomor}_grayscale.jpg"
+
+    file_grayscale = folder_grayscale / nama_grayscale
+
+    gray = cv2.imread(
+        str(file_grayscale),
+        cv2.IMREAD_GRAYSCALE
+    )
+
+
+    # Jika grayscale belum ada, buat otomatis
+    if gray is None:
+
+        print("Citra grayscale belum ditemukan.")
+        print("Membuat grayscale dari citra asli...")
+
+        gray = cv2.cvtColor(
+            img,
+            cv2.COLOR_BGR2GRAY
+        )
+
+        cv2.imwrite(
+            str(file_grayscale),
+            gray
+        )
+
+        print(f"Grayscale dibuat: {file_grayscale}")
+
+
+    # ========================================================
+    # D. HISTOGRAM CITRA ASLI RGB
+    # ========================================================
+
+    histogram_r = cv2.calcHist(
+        [rgb],
+        [0],
+        None,
+        [256],
+        [0, 256]
+    )
+
+    histogram_g = cv2.calcHist(
+        [rgb],
+        [1],
+        None,
+        [256],
+        [0, 256]
+    )
+
+    histogram_b = cv2.calcHist(
+        [rgb],
+        [2],
+        None,
+        [256],
+        [0, 256]
+    )
+
+
+    # ========================================================
+    # E. MEMBUAT HISTOGRAM RGB
+    # ========================================================
+
+    plt.figure(figsize=(10, 6))
+
+    x = np.arange(256)
+
+    plt.bar(
+        x,
+        histogram_r.ravel(),
+        color="red",
+        alpha=0.4,
+        label="Red",
+        width=1.0
+    )
+
+    plt.bar(
+        x,
+        histogram_g.ravel(),
+        color="green",
+        alpha=0.4,
+        label="Green",
+        width=1.0
+    )
+
+    plt.bar(
+        x,
+        histogram_b.ravel(),
+        color="blue",
+        alpha=0.4,
+        label="Blue",
+        width=1.0
+    )
+
+    plt.title(
+        f"Histogram Citra Asli RGB - Foto {nomor}"
+    )
+
+    plt.xlabel(
+        "Intensitas Piksel (0-255)"
+    )
+
+    plt.ylabel(
+        "Jumlah Piksel"
+    )
+
+    plt.xlim(0, 255)
+
+    plt.legend()
+
+    plt.grid(
+        True,
+        linestyle="--",
+        alpha=0.5
+    )
+
+    plt.tight_layout()
+
+
+    # ========================================================
+    # F. MENYIMPAN HISTOGRAM RGB
+    # ========================================================
+
+    nama_histogram_asli = (
+        f"foto{nomor}_histogram_asli_RGB.png"
+    )
+
+    path_histogram_asli = (
+        folder_histogram_asli /
+        nama_histogram_asli
+    )
+
+    plt.savefig(
+        path_histogram_asli,
+        dpi=300,
+        bbox_inches="tight"
+    )
+
+    plt.close()
+
+    print("Histogram citra asli RGB disimpan:")
+    print(f"  {path_histogram_asli}")
+
+
+    # ========================================================
+    # G. HISTOGRAM GRAYSCALE
+    # ========================================================
+
+    histogram_gray = cv2.calcHist(
+        [gray],
+        [0],
+        None,
+        [256],
+        [0, 256]
+    )
+
+
+    # ========================================================
+    # H. MEMBUAT HISTOGRAM GRAYSCALE
+    # ========================================================
+
+    plt.figure(figsize=(10, 6))
+
+    x = np.arange(256)
+
+    plt.bar(
+        x,
+        histogram_gray.ravel(),
+        color="#1f77b4",
+        width=1.0,
+        label="Grayscale"
+    )
+
+    plt.title(
+        f"Histogram Grayscale - Foto {nomor}"
+    )
+
+    plt.xlabel(
+        "Intensitas Piksel (0-255)"
+    )
+
+    plt.ylabel(
+        "Jumlah Piksel"
+    )
+
+    plt.xlim(0, 255)
+
+    plt.legend()
+
+    plt.grid(
+        True,
+        linestyle="--",
+        alpha=0.5
+    )
+
+    plt.tight_layout()
+
+
+    # ========================================================
+    # I. MENYIMPAN HISTOGRAM GRAYSCALE
+    # ========================================================
+
+    nama_histogram_grayscale = (
+        f"foto{nomor}_histogram_grayscale.png"
+    )
+
+    path_histogram_grayscale = (
+        folder_histogram_grayscale /
+        nama_histogram_grayscale
+    )
+
+    plt.savefig(
+        path_histogram_grayscale,
+        dpi=300,
+        bbox_inches="tight"
+    )
+
+    plt.close()
+
+    print("Histogram grayscale disimpan:")
+    print(f"  {path_histogram_grayscale}")
+
+
+    # ========================================================
+    # J. ANALISIS INTENSITAS GRAYSCALE
+    # ========================================================
+
+    mean = np.mean(gray)
+
+    median = np.median(gray)
+
+    minimum = np.min(gray)
+
+    maksimum = np.max(gray)
+
+    rentang = maksimum - minimum
+
+    variance = np.var(gray)
+
+    standard_deviation = np.std(gray)
+
+
+    # ========================================================
+    # K. MENAMPILKAN HASIL ANALISIS
+    # ========================================================
+
+    print("\nAnalisis Intensitas Grayscale:")
+
+    print(f"Mean               : {mean:.2f}")
+
+    print(f"Median             : {median:.2f}")
+
+    print(f"Minimum            : {minimum}")
+
+    print(f"Maksimum           : {maksimum}")
+
+    print(f"Rentang Intensitas : {rentang}")
+
+    print(f"Variansi           : {variance:.2f}")
+
+    print(f"Standar Deviasi    : {standard_deviation:.2f}")
+
+    print("\nCitra selesai diproses.")
+
+
+# ============================================================
+# 6. SELESAI
+# ============================================================
+
+print("\n")
+print("=" * 70)
+print("             ANALISIS HISTOGRAM SELESAI")
+print("=" * 70)
+
+print(f"\nTotal citra diproses : {len(daftar_citra)}")
+
+print("\nHistogram citra asli RGB:")
+print(folder_histogram_asli)
+
+print("\nHistogram citra grayscale:")
+print(folder_histogram_grayscale)
+
+print("\nSemua histogram telah disimpan.")
+print("=" * 70)

@@ -1,0 +1,162 @@
+HASIL OCR CITRA NOMOR IJAZAH
+===============================================================================
+
+Nama gambar : 01_HighQuality_Enhanced
+Ground Truth: Nomor ijazah: 571012022000056
+Spasi tidak dihitung.
+
++----------------+----------------------------------+----------------+-----------+
+| Metode         | Hasil OCR                        | Karakter Benar |   Akurasi |
++----------------+----------------------------------+----------------+-----------+
+| Original       | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Mean filter    | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Median filter  | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Gaussian filter | Nomor tyazah: 571012022000056    |             25 |    92.59% |
+| Sharpening     | Nomor yazah: 571012022000056     |              9 |    33.33% |
++----------------+----------------------------------+----------------+-----------+
+
+
+HASIL OCR CITRA NOMOR IJAZAH
+===============================================================================
+
+Nama gambar : 02_LowContrast
+Ground Truth: Nomor ijazah: 571012022000056
+Spasi tidak dihitung.
+
++----------------+----------------------------------+----------------+-----------+
+| Metode         | Hasil OCR                        | Karakter Benar |   Akurasi |
++----------------+----------------------------------+----------------+-----------+
+| Original       | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Mean filter    | Nomor ijazah: 571012022000056    |             27 |   100.00% |
+| Median filter  | Nomor yazah: 571012022000056     |              9 |    33.33% |
+| Gaussian filter | Nomor tyazah: 571012022000056    |             25 |    92.59% |
+| Sharpening     | Nomor yazah: 571012022000056     |              9 |    33.33% |
++----------------+----------------------------------+----------------+-----------+
+
+
+HASIL OCR CITRA NOMOR IJAZAH
+===============================================================================
+
+Nama gambar : 03_Blurred
+Ground Truth: Nomor ijazah: 571012022000056
+Spasi tidak dihitung.
+
++----------------+----------------------------------+----------------+-----------+
+| Metode         | Hasil OCR                        | Karakter Benar |   Akurasi |
++----------------+----------------------------------+----------------+-----------+
+| Original       | Nomor ijazah: 571012022000056    |             27 |   100.00% |
+| Mean filter    | Nomor ijazah: 57 1012022000056   |             27 |   100.00% |
+| Median filter  | Nomor ijazah: 571012022000056    |             27 |   100.00% |
+| Gaussian filter | Nomor ijazah: 571012022000056    |             27 |   100.00% |
+| Sharpening     | Nomor ijazah: 571012022000056    |             27 |   100.00% |
++----------------+----------------------------------+----------------+-----------+
+
+
+HASIL OCR CITRA NOMOR IJAZAH
+===============================================================================
+
+Nama gambar : 04_HighNoise
+Ground Truth: Nomor ijazah: 571012022000056
+Spasi tidak dihitung.
+
++----------------+----------------------------------+----------------+-----------+
+| Metode         | Hasil OCR                        | Karakter Benar |   Akurasi |
++----------------+----------------------------------+----------------+-----------+
+| Original       | Nomor tyazah: 571012022000056    |             25 |    92.59% |
+| Mean filter    | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Median filter  | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Gaussian filter | Nomor ijazah: 571012022000056    |             27 |   100.00% |
+| Sharpening     | _ Nomor cats $71012022000056     |              5 |    18.52% |
++----------------+----------------------------------+----------------+-----------+
+
+
+HASIL OCR CITRA NOMOR IJAZAH
+===============================================================================
+
+Nama gambar : 05_LowResolution_Upsampled
+Ground Truth: Nomor ijazah: 571012022000056
+Spasi tidak dihitung.
+
++----------------+----------------------------------+----------------+-----------+
+| Metode         | Hasil OCR                        | Karakter Benar |   Akurasi |
++----------------+----------------------------------+----------------+-----------+
+| Original       | Nomor ijazah: 571012022000056    |             27 |   100.00% |
+| Mean filter    | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Median filter  | Nomor ijazah: 571012022000056    |             27 |   100.00% |
+| Gaussian filter | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Sharpening     | Nomor ijazah: 571012022000056    |             27 |   100.00% |
++----------------+----------------------------------+----------------+-----------+
+
+
+HASIL OCR CITRA NOMOR IJAZAH
+===============================================================================
+
+Nama gambar : 06_Faded_Underexposed
+Ground Truth: Nomor ijazah: 571012022000056
+Spasi tidak dihitung.
+
++----------------+----------------------------------+----------------+-----------+
+| Metode         | Hasil OCR                        | Karakter Benar |   Akurasi |
++----------------+----------------------------------+----------------+-----------+
+| Original       | Nomor tyazah: 571012022000056    |             25 |    92.59% |
+| Mean filter    | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Median filter  | Nomor tyazah: 571012022000056    |             25 |    92.59% |
+| Gaussian filter | Nomor tyazah: 571012022000056    |             25 |    92.59% |
+| Sharpening     | Nomor yazah: 571012022000056     |              9 |    33.33% |
++----------------+----------------------------------+----------------+-----------+
+
+
+HASIL OCR CITRA NOMOR IJAZAH
+===============================================================================
+
+Nama gambar : 07_ColorShift_WarmTint
+Ground Truth: Nomor ijazah: 571012022000056
+Spasi tidak dihitung.
+
++----------------+----------------------------------+----------------+-----------+
+| Metode         | Hasil OCR                        | Karakter Benar |   Akurasi |
++----------------+----------------------------------+----------------+-----------+
+| Original       | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Mean filter    | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Median filter  | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Gaussian filter | Nomor tyazah: 571012022000056    |             25 |    92.59% |
+| Sharpening     | Nomor yazah: 571012022000056     |              9 |    33.33% |
++----------------+----------------------------------+----------------+-----------+
+
+
+HASIL OCR CITRA NOMOR IJAZAH
+===============================================================================
+
+Nama gambar : 08_JPEGCompression_Artifacts
+Ground Truth: Nomor ijazah: 571012022000056
+Spasi tidak dihitung.
+
++----------------+----------------------------------+----------------+-----------+
+| Metode         | Hasil OCR                        | Karakter Benar |   Akurasi |
++----------------+----------------------------------+----------------+-----------+
+| Original       | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Mean filter    | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Median filter  | Nomor azah: 571012022000056      |             10 |    37.04% |
+| Gaussian filter | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Sharpening     | Nomor yazah: 571012022000056     |              9 |    33.33% |
++----------------+----------------------------------+----------------+-----------+
+
+
+HASIL OCR CITRA NOMOR IJAZAH
+===============================================================================
+
+Nama gambar : 09_CombinedDegradation
+Ground Truth: Nomor ijazah: 571012022000056
+Spasi tidak dihitung.
+
++----------------+----------------------------------+----------------+-----------+
+| Metode         | Hasil OCR                        | Karakter Benar |   Akurasi |
++----------------+----------------------------------+----------------+-----------+
+| Original       | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Mean filter    | Nomor tjazah: 571012022000056    |             26 |    96.30% |
+| Median filter  | Nomor yazah: 571012022000056     |              9 |    33.33% |
+| Gaussian filter | Nomor tazah: 571012022000056     |              9 |    33.33% |
+| Sharpening     | Nomor ijazah: 571012022000056    |             27 |   100.00% |
++----------------+----------------------------------+----------------+-----------+
+
+
